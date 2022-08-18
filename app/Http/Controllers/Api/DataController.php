@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Data;
 use Illuminate\Http\Request;
+use App\Http\Resources\DataResource;
 
 class DataController extends Controller
 {
@@ -15,6 +16,7 @@ class DataController extends Controller
      */
     public function index()
     {
+        return DataResource::collection(Data::all());
         return Data::all();
     }
 
@@ -33,11 +35,12 @@ class DataController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function show($id)
     {
-        return Data::findOrFail($id);
+//        return DataResource::collection(Data::findOrFail($id));
+      return Data::findOrFail($id);
         // return Data::find($id);
     }
 
