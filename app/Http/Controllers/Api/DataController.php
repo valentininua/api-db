@@ -37,7 +37,8 @@ class DataController extends Controller
      */
     public function show($id)
     {
-        return Data::find($id);
+        return Data::findOrFail($id);
+        // return Data::find($id);
     }
 
     /**
